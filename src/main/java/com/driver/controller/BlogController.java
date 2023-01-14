@@ -36,7 +36,7 @@ public class BlogController {
     public ResponseEntity<String> addImage(@PathVariable int blogId,
             @RequestParam String description,
             @RequestParam String dimensions) {
-        blogService.addImage(null, description, dimensions);
+        blogService.addImage(blogId, description, dimensions);
 
         return new ResponseEntity<>("Added image successfully", HttpStatus.OK);
     }
