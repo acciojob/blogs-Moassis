@@ -54,7 +54,7 @@ public class BlogService {
         Blog blog = findBlogById(blogId);
         Image image = new Image();
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         List<Image> imageList = blog.getImageList();
         imageList.add(image);
         blogRepository1.save(blog);

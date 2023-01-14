@@ -19,7 +19,7 @@ public class ImageService {
         Image image = new Image();
         image.setBlog(blog);
         image.setDescription(description);
-        image.setDimension(dimensions);
+        image.setDimensions(dimensions);
         imageRepository2.save(image);
         return image;
     }
@@ -39,7 +39,7 @@ public class ImageService {
         // `screenDimensions`
         // In case the image is null, return 0
         Image image = findById(id);
-        String dimension = image.getDimension();
+        String dimension = image.getDimensions();
         int areaOfImage = findArea(dimension);
         if (areaOfImage == 0)
             return 0;
