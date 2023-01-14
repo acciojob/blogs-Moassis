@@ -4,6 +4,7 @@ import com.driver.models.*;
 import com.driver.repositories.BlogRepository;
 import com.driver.repositories.ImageRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class ImageService {
         image.setDimensions(dimensions);
 
         List<Image> imageList = blog.getImageList();
+        if (imageList == null)
+            imageList = new ArrayList<>();
         imageList.add(image);
         blog.setImageList(imageList);
         imageRepository2.save(image);
