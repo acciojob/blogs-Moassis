@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Query("select u from User u where u.username =:username")
-    User findUserByUsername(String username);
+    User findByUsername(String username);
 }

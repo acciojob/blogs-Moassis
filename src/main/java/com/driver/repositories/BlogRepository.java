@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BlogRepository extends JpaRepository<Blog, Integer> {
-    @Query("select b from Blog b where b.Id =:blogId")
-    Blog findBlogById(int blogId);
 
 }

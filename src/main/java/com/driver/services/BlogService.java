@@ -40,7 +40,7 @@ public class BlogService {
 
     public Blog findBlogById(int blogId) {
         // find a blog
-        Blog blog = blogRepository1.findBlogById(blogId);
+        Blog blog = blogRepository1.findById(blogId).get();
         return blog;
     }
 
