@@ -1,7 +1,6 @@
 package com.driver.models;
 
 import javax.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 import java.util.*;
 
 @Entity

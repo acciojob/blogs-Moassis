@@ -1,8 +1,6 @@
 package com.driver.models;
 
 import javax.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import java.util.*;
 
 @Entity
 @Table
@@ -24,7 +22,7 @@ public class Image {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(int Id) {
         this.Id = Id;
     }
 

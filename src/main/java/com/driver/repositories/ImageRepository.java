@@ -1,10 +1,6 @@
 package com.driver.repositories;
 
 import com.driver.models.Image;
-import com.driver.models.User;
-
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
