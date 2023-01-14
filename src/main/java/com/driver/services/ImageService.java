@@ -31,11 +31,10 @@ public class ImageService {
         return image;
     }
 
-    public int countImagesInScreen(int id, String screenDimensions) {
+    public int countImagesInScreen(Image image, String screenDimensions) {
         // Find the number of images of given dimensions that can fit in a screen having
         // `screenDimensions`
         // In case the image is null, return 0
-        Image image = findById(id);
         String dimension = image.getDimensions();
         int areaOfImage = findArea(dimension);
         if (areaOfImage == 0)
@@ -47,7 +46,7 @@ public class ImageService {
     public int findArea(String dimension) {
         int length = 0, bredth = 0;
         for (int i = 0; i < dimension.length(); i++) {
-            if (dimension.charAt(i) == '*') {
+            if (dimension.charAt(i) == 'X') {
                 length = Integer.parseInt(dimension.substring(0, i));
                 bredth = Integer.parseInt(dimension.substring(i + 1));
                 return length * bredth;
