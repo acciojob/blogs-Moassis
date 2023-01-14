@@ -27,7 +27,7 @@ public class ImageService {
     }
 
     public Image findById(int id) {
-        Image image = imageRepository2.findById(id);
+        Image image = imageRepository2.findById(id).get();
         return image;
     }
 
