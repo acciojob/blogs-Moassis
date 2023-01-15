@@ -6,6 +6,7 @@ import com.driver.repositories.ImageRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,28 +51,14 @@ public class ImageService {
         // Find the number of images of given dimensions that can fit in a screen having
         // `screenDimensions`
         // In case the image is null, return 0
-        String dimension = image.getDimensions();
-        int Imagelength = 0, Imagebredth = 0;
-        for (int i = 0; i < dimension.length(); i++) {
-            if (dimension.charAt(i) == 'X') {
-                Imagelength = Integer.parseInt(dimension.substring(0, i));
-                Imagebredth = Integer.parseInt(dimension.substring(i + 1));
-                break;
-            }
+        String imageDimension = image.getDimensions();
+        if (screenDimensions.split("X").length == 2 || imageDimension.split("X").length == 2) {
+            Integer maxLength = Integer.parseInt(screenDimensions.split("X")[0])
+                    / Integer.parseInt(imageDimension.split("X")[0]);
+            Integer maxBreadth = Integer.parseInt(screenDimensions.split("X")[1])
+                    / Integer.parseInt(imageDimension.split("X")[1]);
+            return maxLength * maxBreadth;
         }
-        if (Imagelength == 0 || Imagebredth == 0) {
-            return 0;
-        }
-
-        int screenLength = 0, screenBredth = 0;
-        for (int i = 0; i < screenDimensions.length(); i++) {
-            if (screenDimensions.charAt(i) == 'X') {
-                screenLength = Integer.parseInt(screenDimensions.substring(0, i));
-                screenBredth = Integer.parseInt(screenDimensions.substring(i + 1));
-                break;
-            }
-        }
-        return (screenLength / Imagelength) * (screenBredth / Imagebredth);
+        return 0;
     }
-
 }
