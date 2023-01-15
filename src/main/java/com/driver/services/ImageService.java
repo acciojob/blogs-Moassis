@@ -51,22 +51,27 @@ public class ImageService {
         // `screenDimensions`
         // In case the image is null, return 0
         String dimension = image.getDimensions();
-        int areaOfImage = findArea(dimension);
-        if (areaOfImage == 0)
-            return 0;
-        int areaOfScreen = findArea(screenDimensions);
-        return areaOfScreen / areaOfImage;
-    }
-
-    public int findArea(String dimension) {
-        int length = 0, bredth = 0;
+        int Imagelength = 0, Imagebredth = 0;
         for (int i = 0; i < dimension.length(); i++) {
             if (dimension.charAt(i) == 'X') {
-                length = Integer.parseInt(dimension.substring(0, i));
-                bredth = Integer.parseInt(dimension.substring(i + 1));
-                return length * bredth;
+                Imagelength = Integer.parseInt(dimension.substring(0, i));
+                Imagebredth = Integer.parseInt(dimension.substring(i + 1));
+                break;
             }
         }
-        return 0;
+        if (Imagelength == 0 || Imagebredth == 0) {
+            return 0;
+        }
+
+        int screenLength = 0, screenBredth = 0;
+        for (int i = 0; i < screenDimensions.length(); i++) {
+            if (screenDimensions.charAt(i) == 'X') {
+                screenLength = Integer.parseInt(screenDimensions.substring(0, i));
+                screenBredth = Integer.parseInt(screenDimensions.substring(i + 1));
+                break;
+            }
+        }
+        return (screenLength / Imagelength) * (screenBredth / Imagebredth);
     }
+
 }
